@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h1= title
+    -
+     let Vegetables  = [{"Vegetable_Name": "Tomato", "Vegetable_Price": "10", "Vegetable_Colour": "red",}, 
+     {"Vegetable_Name": "Potato", "Vegetable_Price": "7", "Vegetable_Colour": "brown",},  
+     {"Vegetable_Name": "Cabbage", "Vegetable_Price": "5", "Vegetable_Colour": "Green"},]
+    div(class= "container-fluid")
+        div(class = "row")  
+            each item, index in Vegetables
+                div(class= "col-sm-2", onclick=`Vegetables(${index})`) Vegetable_Name: #{item.Vegetable_Name}
+                div(class= "col-sm-2", onclick=`Vegetables(${index})`) Vegetable_Price: #{item.Vegetable_Price}
+                div(class= "col-sm-2", onclick=`Vegetables(${index})`) Vegetable_Colour: #{item.Vegetable_Colour}
+
+    script.
+     function Vegetables(Index){
+        alert(`you have selected ${Index + 1}`)
+     }
