@@ -17,4 +17,7 @@ router.put('/Vegetables/:id', vegetables_controller.vegetables_update_put);
 router.get('/Vegetables/:id', vegetables_controller.vegetables_detail);
 // GET request for list of all Costume items.
 router.get('/Vegetables', vegetables_controller.vegetables_list);
+
+// GET request for one costume.
+router.get('/costumes/:id', Vegetables_controller.Vegetables_detail);
 module.exports = router;
