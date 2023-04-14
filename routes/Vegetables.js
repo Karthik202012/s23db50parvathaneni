@@ -1,9 +1,6 @@
 var express = require('express');
+const vegetables_controlers= require('../controllers/Vegetables');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('Vegetables', { title: 'Search Results Vegetables' });
-});
-
-module.exports = router;
+/* GET vegetables */
+router.get('/', vegetables_controlers.vegetables_view_all_Page );
+module.exports = router

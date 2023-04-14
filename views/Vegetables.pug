@@ -3,15 +3,16 @@ extends layout
 block content
     h1= title
     
-    -let Vegetables  = [{Vegetable_Name: "Tomato", Vegetable_Price: "10", Vegetable_Colour: "red",}, 
+    - let items= results
+    //let Vegetables  = [{Vegetable_Name: "Tomato", Vegetable_Price: "10", Vegetable_Colour: "red",}, 
      {Vegetable_Name: "Potato", Vegetable_Price: "7", Vegetable_Colour: "brown",},  
      {Vegetable_Name: "Cabbage", Vegetable_Price: "5", Vegetable_Colour: "Green"},]
     div(class= "container-fluid")
         div(class = "row")  
-            each item, index in Vegetables
-                div(class= "col-sm-2", onclick=`Vegetables(${index})`) Vegetable_Name: #{item.Vegetable_Name}
-                div(class= "col-sm-2", onclick=`Vegetables(${index})`) Vegetable_Price: #{item.Vegetable_Price}
-                div(class= "col-sm-2", onclick=`Vegetables(${index})`) Vegetable_Colour: #{item.Vegetable_Colour}
+            each item, index in items
+                div(class= "col-sm-2", onclick=`Vegetables(${index})`) Vegetable_Name: #{item.Vegetable_name}
+                div(class= "col-sm-2", onclick=`Vegetables(${index})`) Vegetable_Price: #{item.vegetable_price}
+                div(class= "col-sm-2", onclick=`Vegetables(${index})`) Vegetable_Colour: #{item.Vegetable_colour}
 
     script.
      function Vegetables(Index){

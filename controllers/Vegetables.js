@@ -15,9 +15,25 @@ exports.vegetables_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Vegetables detail: ' + req.params.id);
 };
 // Handle Vegetables create on POST.
-exports.vegetables_create_post = function(req, res) {
-res.send('NOT IMPLEMENTED: Vegetables create POST');
-};
+exports.vegetables_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new Vegetables();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+    // {"costume_type":"goat", "cost":12, "size":"large"}
+    document.Vegetable_name = req.body.Vegetable_name;
+    document.Vegetable_colour = req.body.Vegetable_colour;
+    document.vegetable_price = req.body.vegetable_price;
+    try{
+    let result = await document.save();
+    res.send(result);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    }
 // Handle Vegetables delete form on DELETE.
 exports.vegetables_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Vegetables delete DELETE ' + req.params.id);
@@ -26,3 +42,17 @@ res.send('NOT IMPLEMENTED: Vegetables delete DELETE ' + req.params.id);
 exports.vegetables_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: Vegetables update PUT' + req.params.id);
 };
+
+
+// VIEWS
+// Handle a show all view
+exports.vegetables_view_all_Page = async function(req, res) {
+    try{
+    theVegetables = await Vegetables.find();
+    res.render('Vegetables', { title: 'Vegetables Search Results', results: theVegetables });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    }
