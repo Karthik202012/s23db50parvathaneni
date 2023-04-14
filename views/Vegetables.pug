@@ -2,10 +2,10 @@ extends layout
 
 block content
     h1= title
-    -
-     let Vegetables  = [{"Vegetable_Name": "Tomato", "Vegetable_Price": "10", "Vegetable_Colour": "red",}, 
-     {"Vegetable_Name": "Potato", "Vegetable_Price": "7", "Vegetable_Colour": "brown",},  
-     {"Vegetable_Name": "Cabbage", "Vegetable_Price": "5", "Vegetable_Colour": "Green"},]
+    
+    -let Vegetables  = [{Vegetable_Name: "Tomato", Vegetable_Price: "10", Vegetable_Colour: "red",}, 
+     {Vegetable_Name: "Potato", Vegetable_Price: "7", Vegetable_Colour: "brown",},  
+     {Vegetable_Name: "Cabbage", Vegetable_Price: "5", Vegetable_Colour: "Green"},]
     div(class= "container-fluid")
         div(class = "row")  
             each item, index in Vegetables
