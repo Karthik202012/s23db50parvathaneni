@@ -1,0 +1,24 @@
+extends layout
+ 
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to provide details
+  - let vegetableId = toShow._id
+  - let Vegetable_name = toShow.Vegetable_name
+  - let Vegetable_colour = toShow.Vegetable_colour
+  - let vegetable_price = toShow.vegetable_price
+  div
+    div.row
+      div(class='vegAttr mr-3') ID is:
+      div(class='details mr-3') #{vegetableId}
+    div.row
+      div(class='vegAttr mr-3') name is:
+      div(class='details mr-3') #{Vegetable_name}
+    div.row
+      div(class='vegAttr mr-3') color is:
+      div(class='details mr-3') #{Vegetable_colour}
+    div.row
+      div(class='vegAttr mr-3') price is:
+      div(class='details mr-3') #{vegetable_price}
+
