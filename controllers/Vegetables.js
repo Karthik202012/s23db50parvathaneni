@@ -1,6 +1,6 @@
 var Vegetables = require("../models/Vegetables");
 
-// List of all university
+// List of all vegetables
 
 exports.vegetables_list = async function (req, res) {
 
@@ -22,19 +22,19 @@ exports.vegetables_list = async function (req, res) {
 
 // for a specific university.
 
-// exports.university_detail = function(req, res) {
+// exports.vegetables_detail = function(req, res) {
 
-// res.send('NOT IMPLEMENTED: university detail: ' + req.params.id);
+// res.send('NOT IMPLEMENTED: vegetables detail: ' + req.params.id);
 
 // };
 
-// Handle university create on POST.
+// Handle vegetables create on POST.
 
 exports.vegetables_create_post = async function (req, res) {
 
   console.log(req.body);
 
-  let document = new Vegetables();
+  let document = new Vegetables(); 
 
   document.Vegetable_name = req.body.Vegetable_name;
 
@@ -60,7 +60,7 @@ exports.vegetables_create_post = async function (req, res) {
 
 
 
-// Handle university delete form on DELETE.
+// Handle vegetables delete form on DELETE.
 
 exports.vegetables_delete = async function (req, res) {
 
@@ -84,7 +84,7 @@ exports.vegetables_delete = async function (req, res) {
 
 };
 
-// Handle university update form on PUT.
+// Handle vegetables update form on PUT.
 
 // exports.vegetables_update_put = function (req, res) {
 
@@ -124,7 +124,7 @@ exports.vegetables_view_all_Page = async function (req, res) {
 
 
 
-// for a specific university.
+// for a specific vegetables.
 
 exports.vegetables_detail = async function (req, res) {
 
