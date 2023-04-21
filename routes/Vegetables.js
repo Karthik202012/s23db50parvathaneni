@@ -2,19 +2,11 @@ var express = require("express");
 const vegetables_controller = require("../controllers/Vegetables");
 var router = express.Router();
 
-// const secured = (req, res, next) => {
-//  if (req.user){
-//  return next();
-//  }
-//  req.session.returnTo = req.originalUrl;
-//  res.redirect("/login");
-//  }
-
 /* GET vegetables */
 router.get("/", vegetables_controller.vegetables_view_all_Page);
 
 // GET request for one vegetables.
-router.get("/Vegetables/:id", vegetables_controller.vegetables_detail);
+// router.get("/Vegetables/:id", vegetables_controller.vegetables_detail);
 
 /* GET detail vegetables page */
 router.get("/detail", vegetables_controller.vegetables_view_one_Page);
