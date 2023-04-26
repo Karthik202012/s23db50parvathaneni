@@ -87,9 +87,9 @@ app.use(function (err, req, res, next) {
 async function recreateDB() {
   // Delete everything
   await Vegetables.deleteMany();
-  let instance1 = new Vegetables({ Vegetable_name: "Tomato", vegetable_price: "10", Vegetable_colour: "red" });
-  let instance2 = new Vegetables({ Vegetable_name: "Potato", vegetable_price: "7", Vegetable_colour: "brown" });
-  let instance3 = new Vegetables({ Vegetable_name: "Cabbage", vegetable_price: "5", Vegetable_colour: "Green" });
+  let instance1 = new Vegetables({ Vegetable_name: "Tomato", vegetable_price: 10, Vegetable_colour: "red" });
+  let instance2 = new Vegetables({ Vegetable_name: "Potato", vegetable_price: 7, Vegetable_colour: "brown" });
+  let instance3 = new Vegetables({ Vegetable_name: "Cabbage", vegetable_price: 5, Vegetable_colour: "Green" });
   instance1.save().then(() => { console.log('First Object is created'); }).catch((e) => { console.log('There was an error', e.message); });
   instance2.save().then(() => { console.log('Second Object is created'); }).catch((e) => { console.log('There was an error', e.message); });
   instance3.save().then(() => { console.log('Third Object is created'); }).catch((e) => { console.log('There was an error', e.message); });

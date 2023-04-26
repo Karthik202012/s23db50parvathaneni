@@ -1,15 +1,25 @@
 extends layout
 
 block content
+
+  - let image = results
   h1= title
-  - let items = results;
+  - let create = `dispatch(\"/Vegetables/create\")`
+  button.btn(class="btn-info", onclick=create) Add new Vegetables
+
   div(class="container-fluid")
     div(class="row m-1")
-      each item in items
-       - let destination = `dispatch(\"/vegetables/update?id=${item._id}\")`
-       div(class="row-sm-2", class="m-1") Item #{item.Vegetable_name}(#{item.Vegetable_colour}) is #{item.vegetable_price}
-       button.btn( class="btn-primary ml-1", onclick= destination) Update
+      each Vegetables in image
+        - let destination = `dispatch(\"/Vegetables/update?id=${Vegetables._id}\")`
+        - let detail = `dispatch(\"/Vegetables/detail/?id=${Vegetables._id}")`
+        - let deleteVegetables = `dispatch(\"/Vegetables/delete/?id=${Vegetables._id}")`      
+        div(class="row-sm-2", class="m-1") 
+          | #{Vegetables.Vegetable_name} (#{Vegetables.Vegetable_colour}) is #{Vegetables.vegetable_price}
+          button.btn(class="btn-primary ml-1", onclick=destination) Update
+          button.btn(class="btn-success", onclick=detail) Details
+          button.btn(class="btn-dark", onclick=deleteVegetables) Delete
+
   script.
     function dispatch(path){
-      window.location.href=path
+      window.location.href = path
     }

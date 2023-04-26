@@ -1,45 +1,44 @@
 extends layout
 
 block content
-  h1(id="title")= title
+  h1= title
+  if toShow
+    - let Vegetables_id = toShow._id
+    - let Vegetable_name = toShow.Vegetable_name
+    - let Vegetable_colour = toShow.Vegetable_colour
+    - let vegetable_price = toShow.vegetable_price
 
-  if (toShow == null)
-    h2 No instance to update
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{Vegetables_id}
+      - let actionid = "/resource/Vegetables/" + Vegetables_id
+      form(id='VegetablesForm', action= actionid, method="PUT")
+        div.form-group
+          label.vegAttr(for='Vegetable_name') Vegetable_name
+          input#Vegetable_name(type='text', name='Vegetable_name', value= Vegetable_name )
+        div.form-group
+          label.vegAttr(for='Vegetable_colour') Vegetable_colour 
+          input#Vegetable_colour(type='text', name='Vegetable_colour', value= Vegetable_colour )
+        div.form-group
+          label.vegAttr(for='vegetable_price') Vegetable_price
+          input#vegetable_price(type='number', name='vegetable_price', value= vegetable_price )
+        input(type="submit")
+      script.
+          document.forms['VegetablesForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO do something here to show user that form is being submitted
+            fetch(event.target.action, {
+              method: 'PUT',
+              body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            }).then((resp) => {
+              return resp.json(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+              alert("Update succeeded")
+              // TODO handle body
+            }).catch((error) => {
+              // TODO handle error
+              alert("Update failed,Give correct details " + error )
+            });
+          });
   else
-  - let VegetableId = toShow._id
-  - let Vegetable_name = toShow.Vegetable_name
-  - let Vegetable_colour = toShow.Vegetable_colour
-  - let vegetable_price = toShow.vegetable_price
- 
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div(class='details') #{VegetableId}
-  - let actionid = "/resource/Vegetables/" + VegetableId
-  form(id='VegetableForm', action= actionid, method="PUT")
-    div.form-group
-        label.vegAttr(for='Vegetable_name') Name
-        input#Vegetable_name(type='text', name='Vegetable_name', value= Vegetable_name )
-    div.form-group
-        label.vegAttr(for='Vegetable_colour') Color
-        input#Vegetable_colour(type='text', name='Vegetable_colour', value=Vegetable_colour )
-    div.form-group
-        label.vegAttr(for='Vegetable_price') Price
-        input#vegetable_price(type='number', name='vegetable_price', value= vegetable_price )
-    input(type="submit")
-  script.
-    document.forms['VegetableForm'].addEventListener('submit', (event) => {
-      event.preventDefault();
-      // TODO do something here to show user that form is being submitted
-      fetch(event.target.action, {
-        method: 'PUT',
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-      }).then((resp) => {
-        return resp.json(); // or resp.text() or whatever the server sends
-      }).then((body) => {
-        alert("Update succeded")
-        // TODO handle body
-      }).catch((error) => {
-        // TODO handle error
-        alert("Update failed " + error )
-      });
-    });
+    h2 No instance to delete
